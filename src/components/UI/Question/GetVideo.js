@@ -1,4 +1,8 @@
-import React, { useState, useRef, useEffect } from "react";
+import React, {
+  useState,
+  useRef,
+  useEffect
+} from "react";
 
 const GetVideo = (props) => {
   const token = localStorage.getItem("token");
@@ -9,8 +13,7 @@ const GetVideo = (props) => {
   }, []);
   const videoData = async () => {
     const response = await fetch(
-      "https://api.motiongraphic.tech/admin/video/all",
-      {
+      "https://tutorial.tarekmadady.com/admin/video/all", {
         method: "GET",
         headers: {
           Authorization: `${token}`,
@@ -24,19 +27,31 @@ const GetVideo = (props) => {
   function Showid() {
     props.vid(videoid.current.value);
   }
-  return (
-    <select>
-      <option value="0" ref={videoid} onChange={Showid}>
-        اخترالفيديو
-      </option>
-      {videos.length > 0 ? (
-        videos.map((video) => (
-          <option value={video._id}> {video.title} </option>
+  return ( <
+    select >
+    <
+    option value = "0"
+    ref = {
+      videoid
+    }
+    onChange = {
+      Showid
+    } >
+    اخترالفيديو <
+    /option> {
+      videos.length > 0 ? (
+        videos.map((video) => ( <
+          option value = {
+            video._id
+          } > {
+            video.title
+          } < /option>
         ))
-      ) : (
-        <option value="-1"> مفيش فيديوهات </option>
-      )}
-    </select>
+      ) : ( <
+        option value = "-1" > مفيش فيديوهات < /option>
+      )
+    } <
+    /select>
   );
 };
 

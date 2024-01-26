@@ -1,5 +1,9 @@
-import { useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import {
+  useEffect
+} from "react";
+import {
+  useNavigate
+} from "react-router-dom";
 
 const DeleteTrack = (props) => {
   const token = localStorage.getItem("token");
@@ -9,8 +13,7 @@ const DeleteTrack = (props) => {
   }, []);
   const Delete = async () => {
     const respons = await fetch(
-      `https://api.motiongraphic.tech/admin/track/${props.id}`,
-      {
+      `https://tutorial.tarekmadady.com/admin/track/${props.id}`, {
         method: "DELETE",
         headers: {
           Authorization: `${token}`,

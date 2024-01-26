@@ -1,16 +1,23 @@
-import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import React, {
+  useEffect,
+  useState
+} from "react";
+import {
+  Link
+} from "react-router-dom";
 
 import ShowVideoUser from "./ShowVideoUser";
 
-const ContentCard = ({ cid, coun }) => {
+const ContentCard = ({
+  cid,
+  coun
+}) => {
   const token = localStorage.getItem("token");
   const [videoData, setVideoData] = useState();
   const [show, setShow] = useState(false);
   const myData = async () => {
     const response = await fetch(
-      `https://api.motiongraphic.tech/video/details/${cid}`,
-      {
+      `https://tutorial.tarekmadady.com/video/details/${cid}`, {
         method: "GET",
         headers: {
           Authorization: `${token}`,
@@ -30,25 +37,38 @@ const ContentCard = ({ cid, coun }) => {
     setShow(true);
   }
 
-  return (
-    <>
-      <div className="row">
-        <div dir="rtl" className="col-3">
-          الدرس: {coun} <br />
-          <Link
-            key={videoData && videoData._id}
-            className="fs-2"
-            onClick={showVid}
-            to={`/show/video/${cid}`}
-          >
-            {videoData && videoData.videoTitle}
-          </Link>
-        </div>
-        {/* <div className="col-9">
-                <ShowVideoUser id={cid} />
-              </div> */}
-      </div>
-    </>
+  return ( <
+    >
+    <
+    div className = "row" >
+    <
+    div dir = "rtl"
+    className = "col-3" >
+    الدرس: {
+      coun
+    } < br / >
+    <
+    Link key = {
+      videoData && videoData._id
+    }
+    className = "fs-2"
+    onClick = {
+      showVid
+    }
+    to = {
+      `/show/video/${cid}`
+    } >
+    {
+      videoData && videoData.videoTitle
+    } <
+    /Link> <
+    /div> {
+      /* <div className="col-9">
+                      <ShowVideoUser id={cid} />
+                    </div> */
+    } <
+    /div> <
+    />
   );
 };
 

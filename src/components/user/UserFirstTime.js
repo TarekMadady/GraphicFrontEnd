@@ -1,5 +1,9 @@
-import { useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import {
+  useEffect
+} from "react";
+import {
+  useNavigate
+} from "react-router-dom";
 
 const UserFirstTime = () => {
   const token = localStorage.getItem("token");
@@ -9,8 +13,7 @@ const UserFirstTime = () => {
   }, []);
   const getuser = async () => {
     const respon = await fetch(
-      "https://api.motiongraphic.tech/user/getfirst",
-      {
+      "https://tutorial.tarekmadady.com/user/getfirst", {
         method: "GET",
         headers: {
           Authorization: `${token}`,

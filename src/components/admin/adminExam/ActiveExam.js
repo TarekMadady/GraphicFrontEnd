@@ -1,16 +1,18 @@
 // import React from "react";
-import { useNavigate } from "react-router-dom";
+import {
+  useNavigate
+} from "react-router-dom";
 
 const ActiveExam = (props) => {
   let navigate = useNavigate();
   const examid = props.parm;
   const token = localStorage.getItem("token");
-  fetch(`https://api.motiongraphic.tech/admin/exam/active/${examid}`, {
-    method: "PATCH",
-    headers: {
-      Authorization: `${token}`,
-    },
-  })
+  fetch(`https://tutorial.tarekmadady.com/admin/exam/active/${examid}`, {
+      method: "PATCH",
+      headers: {
+        Authorization: `${token}`,
+      },
+    })
     .then((response) => {
       return response.json();
     })

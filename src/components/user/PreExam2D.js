@@ -1,4 +1,7 @@
-import React, { useEffect, useState } from "react";
+import React, {
+  useEffect,
+  useState
+} from "react";
 import Exam from "../UI/userExam/Exam";
 
 const PreExam2D = () => {
@@ -15,8 +18,7 @@ const PreExam2D = () => {
 
   const GetData = async () => {
     const response = await fetch(
-      "https://api.motiongraphic.tech/exam/preexam2d",
-      {
+      "https://tutorial.tarekmadady.com/exam/preexam2d", {
         method: "Get",
         headers: {
           Authorization: `${token}`,
@@ -37,17 +39,29 @@ const PreExam2D = () => {
     }
   };
 
-  return (
-    <>
-      <Exam
-        examid={exid}
-        exdata={examData}
-        examname={examName}
-        examDegree={examDegree}
-        Questioncount={examQuestion}
-        allQuestions={questions}
-      />
-    </>
+  return ( <
+    >
+    <
+    Exam examid = {
+      exid
+    }
+    exdata = {
+      examData
+    }
+    examname = {
+      examName
+    }
+    examDegree = {
+      examDegree
+    }
+    Questioncount = {
+      examQuestion
+    }
+    allQuestions = {
+      questions
+    }
+    /> <
+    />
   );
 };
 

@@ -1,5 +1,9 @@
-import { useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import {
+  useEffect
+} from "react";
+import {
+  useNavigate
+} from "react-router-dom";
 
 const DeleteExam = (props) => {
   let navigate = useNavigate();
@@ -8,8 +12,7 @@ const DeleteExam = (props) => {
 
   const deldata = async () => {
     const response = await fetch(
-      `https://api.motiongraphic.tech/admin/exam/${examid}`,
-      {
+      `https://tutorial.tarekmadady.com/admin/exam/${examid}`, {
         method: "DELETE",
         headers: {
           Authorization: `${token}`,

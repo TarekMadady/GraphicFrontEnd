@@ -1,18 +1,24 @@
-import { useEffect } from "react";
-import { useParams, useNavigate } from "react-router-dom";
+import {
+  useEffect
+} from "react";
+import {
+  useParams,
+  useNavigate
+} from "react-router-dom";
 
 const Delete = () => {
   let navigate = useNavigate();
   const token = localStorage.getItem("token");
   const parm = useParams();
-  const { libid } = parm;
+  const {
+    libid
+  } = parm;
   useEffect(() => {
     Dele();
   }, []);
   const Dele = async () => {
     const repon = await fetch(
-      `https://api.motiongraphic.tech/admin/library/${libid}`,
-      {
+      `https://tutorial.tarekmadady.com/admin/library/${libid}`, {
         method: "DELETE",
         headers: {
           Authorization: `${token}`,

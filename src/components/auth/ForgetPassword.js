@@ -1,5 +1,9 @@
-import React, { useRef } from "react";
-import { useNavigate } from "react-router-dom";
+import React, {
+  useRef
+} from "react";
+import {
+  useNavigate
+} from "react-router-dom";
 
 const ForgetPassword = () => {
   const useEmail = useRef();
@@ -11,13 +15,13 @@ const ForgetPassword = () => {
     const Data = {
       email: usermail,
     };
-    fetch("https://api.motiongraphic.tech/auth/forgetpassword", {
-      method: "POST",
-      body: JSON.stringify(Data),
-      headers: {
-        "content-type": "application/json",
-      },
-    })
+    fetch("https://tutorial.tarekmadady.com/auth/forgetpassword", {
+        method: "POST",
+        body: JSON.stringify(Data),
+        headers: {
+          "content-type": "application/json",
+        },
+      })
       .then((response) => {
         return response.json();
       })
@@ -28,22 +32,28 @@ const ForgetPassword = () => {
       });
   }
 
-  return (
-    <form onSubmit={forgetHandle}>
-      <div className="mb-3">
-        <label htmlFor="userEmail"> Email </label>
-        <input
-          type="email"
-          className="form-control"
-          id="userEmail"
-          placeholder="Enter Your Mail"
-          ref={useEmail}
-        />
-      </div>
-      <button type="submit" className="btn btn-primary w-100">
-        Signin
-      </button>
-    </form>
+  return ( <
+    form onSubmit = {
+      forgetHandle
+    } >
+    <
+    div className = "mb-3" >
+    <
+    label htmlFor = "userEmail" > Email < /label> <
+    input type = "email"
+    className = "form-control"
+    id = "userEmail"
+    placeholder = "Enter Your Mail"
+    ref = {
+      useEmail
+    }
+    /> <
+    /div> <
+    button type = "submit"
+    className = "btn btn-primary w-100" >
+    Signin <
+    /button> <
+    /form>
   );
 };
 

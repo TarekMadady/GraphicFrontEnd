@@ -1,4 +1,7 @@
-import React, { useEffect, useState } from "react";
+import React, {
+  useEffect,
+  useState
+} from "react";
 import LibraryCard from "../../UI/library/LibraryCard";
 
 const Libraryes = () => {
@@ -9,8 +12,7 @@ const Libraryes = () => {
   }, []);
   const LibrAll = async () => {
     const respon = await fetch(
-      "https://api.motiongraphic.tech/admin/library/all",
-      {
+      "https://tutorial.tarekmadady.com/admin/library/all", {
         method: "GET",
         headers: {
           Authorization: `${token}`,
@@ -22,22 +24,32 @@ const Libraryes = () => {
     setLib(Data);
   };
 
-  return (
-    <div className="d-fex">
-      {lib.length > 0 ? (
-        lib.map((lp) => (
-          <LibraryCard
-            key={lp._id}
-            title={lp.title}
-            linkDescription={lp.linkDescription}
-            id={lp._id}
-            url={lp.urlLink}
+  return ( <
+    div className = "d-fex" > {
+      lib.length > 0 ? (
+        lib.map((lp) => ( <
+          LibraryCard key = {
+            lp._id
+          }
+          title = {
+            lp.title
+          }
+          linkDescription = {
+            lp.linkDescription
+          }
+          id = {
+            lp._id
+          }
+          url = {
+            lp.urlLink
+          }
           />
         ))
-      ) : (
-        <div> No Library </div>
-      )}
-    </div>
+      ) : ( <
+        div > No Library < /div>
+      )
+    } <
+    /div>
   );
 };
 
