@@ -1,20 +1,17 @@
-import React, {
-  useEffect,
-  useState,
-  useRef
-} from "react";
+import React, { useEffect, useState, useRef } from 'react';
 
 const ATrack = (props) => {
   const tid = useRef();
-  const token = localStorage.getItem("token");
+  const token = localStorage.getItem('token');
   const [track, setTrack] = useState([]);
   useEffect(() => {
     search();
   }, []);
   const search = async () => {
     const respons = await fetch(
-      "https://tutorial.tarekmadady.com/admin/track/all", {
-        method: "GET",
+      'https://tutorial.tarekmadady.com/admin/track/all',
+      {
+        method: 'GET',
         headers: {
           Authorization: `${token}`,
         },
@@ -28,33 +25,21 @@ const ATrack = (props) => {
     props.chanTid(tid.current.value);
   }
 
-  return ( <
-    select className = "form-select"
-    aria - label = "Default select example"
-    ref = {
-      tid
-    }
-    onChange = {
-      selecthandle
-    }
-    defaultValue = {
-      "DEFAULT"
-    } >
-    <
-    option value = "DEFAULT" > اختر مسار < /option> {
-      track.map((tr) => ( <
-        option key = {
-          tr._id
-        }
-        value = {
-          tr._id
-        } > {
-          tr.trackName
-        } <
-        /option>
-      ))
-    } <
-    /select>
+  return (
+    <select
+      className="form-select"
+      aria-label="Default select example"
+      ref={tid}
+      onChange={selecthandle}
+      defaultValue={'DEFAULT'}
+    >
+      <option value="DEFAULT"> اختر مسار </option>
+      {track.map((tr) => (
+        <option key={tr._id} value={tr._id}>
+          {tr.trackName}
+        </option>
+      ))}
+    </select>
   );
 };
 

@@ -1,36 +1,28 @@
-import React, {
-  useEffect,
-  useState
-} from "react";
-import {
-  useParams,
-  useNavigate,
-  Link
-} from "react-router-dom";
+import React, { useEffect, useState } from 'react';
+import { useParams, useNavigate, Link } from 'react-router-dom';
 
 const ShowExamResult = (props) => {
-  const [examtitle, setExamtitle] = useState("");
-  const [examDate, setExamDate] = useState("");
-  const [examDegree, setExamDegree] = useState("");
-  const [degree, setDegree] = useState("");
-  const token = localStorage.getItem("token");
+  const [examtitle, setExamtitle] = useState('');
+  const [examDate, setExamDate] = useState('');
+  const [examDegree, setExamDegree] = useState('');
+  const [degree, setDegree] = useState('');
+  const token = localStorage.getItem('token');
   let navigate = useNavigate();
   const param = useParams();
-  const {
-    archive
-  } = param;
+  const { archive } = param;
 
   const getData = async () => {
     const response = await fetch(
-      `https://tutorial.tarekmadady.com/exam/showresult/${archive}`, {
-        method: "GET",
+      `https://tutorial.tarekmadady.com/exam/showresult/${archive}`,
+      {
+        method: 'GET',
         headers: {
           Authorization: `${token}`,
         },
       }
     );
     const Data = await response.json();
-    console.log("hh", Data);
+    console.log('hh', Data);
     setExamtitle(Data.title);
     // setExamDate(Data.date);
     setExamDegree(Data.examDegree);
@@ -46,70 +38,51 @@ const ShowExamResult = (props) => {
     // navigate("/admin", { replace: true });
   }, []);
 
-  return ( <
-    main className = "d-flex w-100" >
-    <
-    div className = "container d-flex flex-column" >
-    <
-    div className = "row vh-100" >
-    <
-    div className = "col-sm-10 col-md-8 col-lg-6 col-xl-5 mx-auto d-table h-100" >
-    <
-    div className = "text-center mt-4"
-    dir = "rtl" >
-    <
-    h1 className = "h2" > نتيجة الإختبار القبلي < /h1> <
-    /div> <
-    div className = "card"
-    dir = "rtl" >
-    <
-    div className = "vard-body" >
-    <
-    div className = "m-sm-3" >
-    <
-    div className = "d-flex flex-column" >
-    <
-    div className = "d-flex my-2 fs-2" >
-    <
-    div className = "ms-2" > تاريخ الامتحان < /div> <
-    div > {
-      examDate
-    } < /div> <
-    /div> <
-    div className = "d-flex my-2 fs-2" >
-    <
-    div > درجة الامتحان < /div> <div> {examDegree} </div >
-    <
-    /div> <
-    div className = "d-flex my-2 fs-2" >
-    <
-    div > درجة الطالب < /div> <
-    div > {
-      Math.floor((degree * examDegree) / 100)
-    } % < /div> <
-    /div> <
-    div className = "d-flex my-2" > {
-      examtitle && examtitle === "preExam2D" ? ( <
-        Link to = "/track/track2d"
-        className = "btn btn-primary fs-3" >
-        ابدء المديولات التعليمية <
-        /Link>
-      ) : ( <
-        Link to = "/track3D"
-        className = "btn btn-primary" >
-        ابدء المديولات التعليمية <
-        /Link>
-      )
-    } <
-    /div> <
-    /div> <
-    /div> <
-    /div> <
-    /div> <
-    /div> <
-    /div> <
-    /div> {
-      /* <div className="container" dir="rtl">
+  return (
+    <main className="d-flex w-100">
+      <div className="container d-flex flex-column">
+        <div className="row vh-100">
+          <div className="col-sm-10 col-md-8 col-lg-6 col-xl-5 mx-auto d-table h-100">
+            <div className="text-center mt-4" dir="rtl">
+              <h1 className="h2"> نتيجة الإختبار القبلي </h1>
+            </div>
+            <div className="card" dir="rtl">
+              <div className="vard-body">
+                <div className="m-sm-3">
+                  <div className="d-flex flex-column">
+                    <div className="d-flex my-2 fs-2">
+                      <div className="ms-2"> تاريخ الامتحان </div>
+                      <div> {examDate} </div>
+                    </div>
+                    <div className="d-flex my-2 fs-2">
+                      <div> درجة الامتحان </div> <div> {examDegree} </div>
+                    </div>
+                    <div className="d-flex my-2 fs-2">
+                      <div> درجة الطالب </div>
+                      <div> {Math.floor((degree * examDegree) / 100)} % </div>
+                    </div>
+                    <div className="d-flex my-2">
+                      {examtitle && examtitle === 'preExam2D' ? (
+                        <Link
+                          to="/track/track2d"
+                          className="btn btn-primary fs-3"
+                        >
+                          ابدء المديولات التعليمية
+                        </Link>
+                      ) : (
+                        <Link to="/track3D" className="btn btn-primary">
+                          ابدء المديولات التعليمية
+                        </Link>
+                      )}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      {/* <div className="container" dir="rtl">
                     <div className="d-flex flex-column">
                       <div className="w-100 d-flex">
                         <h1>اسم الامتحان</h1>
@@ -137,9 +110,8 @@ const ShowExamResult = (props) => {
                         مسار 3D
                       </Link>
                     )}
-                  </div> */
-    } <
-    /main>
+                  </div> */}
+    </main>
   );
 };
 

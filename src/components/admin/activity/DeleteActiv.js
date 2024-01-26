@@ -1,25 +1,19 @@
-import React, {
-  useEffect
-} from "react";
-import {
-  useParams,
-  useNavigate
-} from "react-router-dom";
+import React, { useEffect } from 'react';
+import { useParams, useNavigate } from 'react-router-dom';
 
 const DeleteActiv = () => {
   let navigate = useNavigate();
-  const token = localStorage.getItem("token");
+  const token = localStorage.getItem('token');
   const parm = useParams();
-  const {
-    actid
-  } = parm;
+  const { actid } = parm;
   useEffect(() => {
     removeActive();
   }, []);
   const removeActive = async () => {
     const respon = await fetch(
-      `https://tutorial.tarekmadady.com/admin/activity/${actid}`, {
-        method: "DELETE",
+      `https://tutorial.tarekmadady.com/admin/activity/${actid}`,
+      {
+        method: 'DELETE',
         headers: {
           Authorization: `${token}`,
         },
@@ -27,12 +21,12 @@ const DeleteActiv = () => {
     );
     const data = await respon.json();
     if (data) {
-      navigate("/admin/activities", {
-        replace: true
+      navigate('/admin/activities', {
+        replace: true,
       });
     }
   };
-  return <div > Delete < /div>;
+  return <div> Delete </div>;
 };
 
 export default DeleteActiv;

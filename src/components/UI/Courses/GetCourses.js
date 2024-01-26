@@ -1,11 +1,7 @@
-import React, {
-  useEffect,
-  useRef,
-  useState
-} from "react";
+import React, { useEffect, useRef, useState } from 'react';
 
 const GetCourses = (props) => {
-  const token = localStorage.getItem("token");
+  const token = localStorage.getItem('token');
   const [course, setCourse] = useState([]);
   const cid = useRef();
   useEffect(() => {
@@ -13,8 +9,9 @@ const GetCourses = (props) => {
   }, []);
   const courseData = async () => {
     const respon = await fetch(
-      "https://tutorial.tarekmadady.com/admin/course/all", {
-        method: "GET",
+      'https://tutorial.tarekmadady.com/admin/course/all',
+      {
+        method: 'GET',
         headers: {
           Authorization: `${token}`,
         },
@@ -28,37 +25,26 @@ const GetCourses = (props) => {
     const id = cid.current.value;
     props.courID(id);
   }
-  return ( <
-    >
-    <
-    select className = "form-select"
-    ref = {
-      cid
-    }
-    aria - label = "Default select example"
-    onChange = {
-      changevalue
-    } >
-    <
-    option value = "0" > اختر كورس < /option> {
-      course.length === 0 ? ( <
-        option > مفيش كورسات < /option>
-      ) : (
-        course.map((co) => ( <
-          option key = {
-            co._id
-          }
-          value = {
-            co._id
-          } > {
-            co.coursename
-          } <
-          /option>
-        ))
-      )
-    } <
-    /select> <
-    />
+  return (
+    <>
+      <select
+        className="form-select"
+        ref={cid}
+        aria-label="Default select example"
+        onChange={changevalue}
+      >
+        <option value="0"> اختر كورس </option>
+        {course.length === 0 ? (
+          <option> مفيش كورسات </option>
+        ) : (
+          course.map((co) => (
+            <option key={co._id} value={co._id}>
+              {co.coursename}
+            </option>
+          ))
+        )}
+      </select>
+    </>
   );
 };
 
